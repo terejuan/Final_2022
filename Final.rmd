@@ -57,6 +57,13 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 In order to compare each sub group we toke them apart and did a separate data for each group. First we are doing the males data, We ar going to use the ggplot data. In the chart we created for the Male group we can see that the ones that had covid19 and took the vaccine were better then the ones that took the placebo, and the Males that were OK and took the placebo had a higher chance of getting sick of covid19 then those that took the vaccine. We can see that the vaccine has a positive reaction to the males.
 
 
+```{r}
+table1 <- xtabs(~infected + treatment, data=Males)
+rowPerc(table1)
+colPerc(table1)
+```
+
+
 
 ## Females
 
