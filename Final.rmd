@@ -104,6 +104,7 @@ basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
+Now on our data for Females we can see that the vaccine is working  about the same as for the Males. The chart shows us that females  that took the placebo got sick of covid19 about 60% more then those that took the vaccine. Females  that took the vaccine were about 40% chance of getting covid19. seeing that more females  get sick with the placebo and less with the vaccine we can conclude that the vaccine is having a positive results on females as well. And the females that are on the OK side have a 50% to 50% chance of getting covid19 whether they take the vaccine or the placebo.
 
 ## LGBTQ
 
