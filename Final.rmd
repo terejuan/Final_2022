@@ -62,12 +62,15 @@ table1 <- xtabs(~infected + treatment, data=Males)
 rowPerc(table1)
 colPerc(table1)
 ```
+By looking at the numeric summery we can see that the plot was right, the males that took the placebo 70% of them got sick of covid19 and only 32% of them that had the vaccine got it. This shows us that the vaccine was very  effective because only 1.28% of the males out of 100 got sick.
+
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
 fisher.test(table1)
 ```
 
+The fisher exact test gave us a low P- value of 2.645e-11 seeing this numbers means that these results are not likely to occur by a chance. so if you are a Male that took the drug the odd of you getting covid19 is very low as of those who took the placebo, which is 2x greater then if you did take the vaccine.
 
 ## Females
 
