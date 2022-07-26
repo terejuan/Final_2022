@@ -38,6 +38,13 @@ A new  preventative vaccine (covid91) is under test in clinical trials. Given th
 
 ## Males
 
+```{r}
+Males <- filter(FinalDat, sex=="M")
+```
+
+```{r}
+Males <- select(Males, -sex)
+```
 
 ```{r}
 dd2 <- Males %>% group_by(infected, treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
@@ -73,6 +80,29 @@ fisher.test(table1)
 The fisher exact test gave us a low P- value of 2.645e-11 seeing this numbers means that these results are not likely to occur by a chance. so if you are a Male that took the drug the odd of you getting covid19 is very low as of those who took the placebo, which is 2x greater then if you did take the vaccine.
 
 ## Females
+
+```{r}
+Females <- filter(FinalDat, sex=="F")
+```
+
+```{r}
+Females <- select(Females, -sex)
+```
+
+```{r}
+dd2 <- Females %>% group_by(infected, treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected, y=count,fill= treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
 
 
 ## LGBTQ
