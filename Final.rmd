@@ -78,6 +78,7 @@ print(fishtestm)
 The fisher exact test gave us a low P- value of 2.645e-11 seeing this numbers means that these results are not likely to occur by a chance. so if you are a Male that took the vaccine the odd of you getting covid19 is very low as of those who took the placebo, which is 2x greater then if you did take the vaccine.
 
 # Eficcacy
+
 ```{r}
 options(digits = 1)
 maleffic=fishtestm$estimate/(1+fishtestm$estimate)*100
@@ -155,8 +156,34 @@ By looking on the odd ratio we can see that the vaccine is effective for Females
 # LGBTQ
 
 ```{r}
-LGBTQ <- filter(FinalDat, sex=="F")
+LGBTQ <- filter(FinalData,LGBTQ =="gay")
 ```
+
+```{r}
+dd2 <- LGBTQ %>% group_by(infected, treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected, y=count,fill= treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
+Looking at the bar-plot  for "Gay" we notice that the vaccine is not being effective on these group. Being that the percentage  of gay that took the vaccine is really high at 85% and got sic with covid19. And 25% of them that  took the placebo got sick with covid19. Seeing this results we can see that the vaccine wasn’t working so well on Gays then on the Female and Males.
+
+## Numeric Summeries
+
+```{r}
+table3 <- xtabs(~infected + treatment, data=LGBTQ)
+rowPerc(table3)
+colPerc(table3)
+```
+
 
 
 ## Graphical Description
@@ -164,7 +191,7 @@ LGBTQ <- filter(FinalDat, sex=="F")
 
 
 
-## Numeric Summeries
+
 ## Inferential Results
 
 
