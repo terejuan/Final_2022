@@ -200,6 +200,16 @@ print(fishtestL)
 
 The odd ratio is telling us that the  placebo is  0.1%. of catching vovid19, this group  is better off with the placebo then the vaccine.
 
+# Efficacy
+
+```{r}
+Leffic=fishtestL$estimate/(1+fishtestL$estimate)*100
+Lefficlo=fishtestL$conf.int[1]/(1+fishtestL$conf.int[1])*100
+Leffichi=fishtestL$conf.int[2]/(1+fishtestL$conf.int[2])*100
+print(Leffic)
+print(Lefficlo)
+print(Leffichi)
+```
 
 # Druggies
 ## Graphical Description 
