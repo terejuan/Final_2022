@@ -132,7 +132,7 @@ chisqtestGC(table2)
 fisher.test(table2)
 ```
 
-
+The fisher exact test gave us a very low p-value 0.0011, being that is such a small number , the chances of this results are not likely to happen by chance. As we look at the ratio, we got a 1.43 odd ratio, meaning that the chances of getting Covid19 is 1.43% time likely to get it if they thake the placebo, then if they take the vaccine.
 
 
 # LGBTQ
