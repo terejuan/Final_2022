@@ -86,6 +86,9 @@ fisher.test(table1)
 
 The fisher exact test gave us a low P- value of 2.645e-11 seeing this numbers means that these results are not likely to occur by a chance. so if you are a Male that took the drug the odd of you getting covid19 is very low as of those who took the placebo, which is 2x greater then if you did take the vaccine.
 
+
+
+
 # Females
 
 ```{r}
@@ -129,10 +132,22 @@ In the numeric result we can see that Females that took the placebo 2.3% of them
 ```{r}
 chisq.test(table2)
 chisqtestGC(table2)
-fisher.test(table2)
+fishtestf<-fisher.test(table2)
 ```
 
 The fisher exact test gave us a very low p-value 0.0011, being that is such a small number , the chances of this results are not likely to happen by chance. As we look at the ratio, we got a 1.43 odd ratio, meaning that the chances of getting Covid19 is 1.43% time likely to get it if they thake the placebo, then if they take the vaccine.
+
+```{r}
+options(digits = 1)
+femeffic=fishtestf$estimate/(1+fishtestf$estimate)*100
+femefficlo=fishtestf$conf.int[1]/(1+fishtestf$conf.int[1])*100
+femeffichi=fishtestf$conf.int[2]/(1+fishtestf$conf.int[2])*100
+print(femeffic)
+print(femefficlo)
+print(femeffichi)
+```
+The confidence interval of the effectiveness of the vaccine on females has a low of `r femefficlo` and a high of `r femeffichi`.
+
 
 
 # LGBTQ
