@@ -134,10 +134,11 @@ In the numeric result we can see that Females that took the placebo 2.3% of them
 ```{r}
 chisq.test(table2)
 chisqtestGC(table2)
-fishtestf<-fisher.test(table2)
+fishtestf <-fisher.test(table2)
+print(fishtestf)
 ```
 
-The fisher exact test gave us a very low p-value 0.0011, being that is such a small number , the chances of this results are not likely to happen by chance. As we look at the ratio, we got a 1.43 odd ratio, meaning that the chances of getting Covid19 is 1.43% time likely to get it if they thake the placebo, then if they take the vaccine.
+The fisher exact test gave us a very low p-value 9e-04, being that is such a small number , the chances of this results are not likely to happen by chance. As we look at the ratio, we got a 1.43 odd ratio, meaning that the chances of getting Covid19 is 1.43% time likely to get it if they thake the placebo, then if they take the vaccine.
 
 # Efficacy
 
@@ -193,9 +194,11 @@ In the numerical result we see that 3% of the LGBTQ that took the vaccine got si
 ```{r}
 chisq.test(table3)
 chisqtestGC(table3)
-fishtestf<-fisher.test(table3)
+fishtestL <-fisher.test(table3)
+print(fishtestL)
 ```
 
+The odd ratio is telling us that the  placebo is  0.1%. of catching vovid19, this group  is better off with the placebo then the vaccine.
 
 
 # Druggies
