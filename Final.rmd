@@ -188,13 +188,13 @@ colPerc(table3)
 
 In the numerical result we see that 3% of the LGBTQ that took the vaccine got sick with covid19, and only 0.5% of them that took the placebo got sick. Being the number so high it meas that the vaccine was ineffective on LGBTQ.
 
-
-
-
-
-
-
 ## Inferential Results
+
+```{r}
+chisq.test(table3)
+chisqtestGC(table3)
+fishtestf<-fisher.test(table3)
+```
 
 
 
