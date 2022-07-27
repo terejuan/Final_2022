@@ -20,9 +20,6 @@ FinalData <- FinalData %>%
 mutate(across(where(is.character), as.factor))
 ```
 
-```{r}
-FinalDat <-read.csv(file="final_Data.csv")
-```
 
 
 # Introduction
@@ -32,7 +29,7 @@ A new  preventative vaccine (covid91) is under test in clinical trials. Given th
 # Males
 
 ```{r}
-Males <- filter(FinalDat, sex=="M")
+Males <- filter(FinalData, sex=="M")
 ```
 
 ```{r}
@@ -74,16 +71,29 @@ By looking at the numeric summery we can see that the plot was right, the males 
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
-fisher.test(table1)
+fishtestm <-fisher.test(table1)
+print(fishtestm)
 ```
 
-The fisher exact test gave us a low P- value of 2.645e-11 seeing this numbers means that these results are not likely to occur by a chance. so if you are a Male that took the drug the odd of you getting covid19 is very low as of those who took the placebo, which is 2x greater then if you did take the vaccine.
+The fisher exact test gave us a low P- value of 2.645e-11 seeing this numbers means that these results are not likely to occur by a chance. so if you are a Male that took the vaccine the odd of you getting covid19 is very low as of those who took the placebo, which is 2x greater then if you did take the vaccine.
+
+# Eficcacy
+```{r}
+options(digits = 1)
+maleffic=fishtestm$estimate/(1+fishtestm$estimate)*100
+malefficlo=fishtestm$conf.int[1]/(1+fishtestm$conf.int[1])*100
+maleffichi=fishtestm$conf.int[2]/(1+fishtestm$conf.int[2])*100
+print(maleffic)
+print(malefficlo)
+print(maleffichi)
+```
+As we look at how effective is the vaccine for the Males we can see that it is very effective, being that the odd ratio is very high to 68% being above50%. The confidence interval of the effectiveness of the vaccine on Males has a low of `r malefficlo` and a high of `r maleffichi`.
 
 
 # Females
 
 ```{r}
-Females <- filter(FinalDat, sex=="F")
+Females <- filter(FinalData, sex=="F")
 ```
 
 ```{r}
@@ -116,7 +126,7 @@ table2 <- xtabs(~infected + treatment, data=Females)
 rowPerc(table2)
 colPerc(table2)
 ```
-In the numeric result we can see that Females that took the placebo 2.3% of them got Covid19, and the females that took the vaccine only 1.62% of then got Covid19. Just by seeing this results we can assume that the vaccine had a positive effect on females because there was low chance of getting Covid19 then if you didn't take it. Females are at 2 times at risk of getting Covid10 if they don't take the vaccine.
+In the numeric result we can see that Females that took the placebo 2.3% of them got Covid19, and the females that took the vaccine only 1.62% of then got Covid19. Just by seeing this results we can assume that the vaccine had a positive effect on females because there was low chance of getting Covid19 then if you didn't take it. Females are at 2 times at risk of getting Covid19 if they don't take the vaccine.
 
 ## Inferential Results
 
@@ -131,7 +141,6 @@ The fisher exact test gave us a very low p-value 0.0011, being that is such a sm
 # Efficacy
 
 ```{r}
-options(digits = 1)
 femeffic=fishtestf$estimate/(1+fishtestf$estimate)*100
 femefficlo=fishtestf$conf.int[1]/(1+fishtestf$conf.int[1])*100
 femeffichi=fishtestf$conf.int[2]/(1+fishtestf$conf.int[2])*100
@@ -139,7 +148,7 @@ print(femeffic)
 print(femefficlo)
 print(femeffichi)
 ```
-The confidence interval of the effectiveness of the vaccine on females has a low of `r femefficlo` and a high of `r femeffichi`.
+By looking on the odd ratio we can see that the vaccine is effective for Females as well, since the ratio is above 50% being at 59% .The confidence interval of the effectiveness of the vaccine on females has a low of `r femefficlo` and a high of `r femeffichi`.
 
 
 
@@ -149,25 +158,9 @@ The confidence interval of the effectiveness of the vaccine on females has a low
 LGBTQ <- filter(FinalDat, sex=="F")
 ```
 
-```{r}
-LGBTQ <- select(LGBTQ, -sex)
-```
 
 ## Graphical Description
-```{r}
-dd2 <- LGBTQ %>% group_by(infected, treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
 
-
-# the group_by followed by summarize(count=n())
-
-basicC <- ggplot(dd2,aes(x=infected, y=count,fill= treatment))
-basicC + geom_bar(stat="identity",position="dodge")
-
-#Now for percentage plot
-
-basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
-basicCC + geom_bar(stat="identity", position = "dodge")
-```
 
 
 
