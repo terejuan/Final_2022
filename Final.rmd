@@ -36,7 +36,7 @@ Males <- select(Males, -sex)
 
 A new  preventative vaccine (covid91) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
 
-## Males
+# Males
 
 ```{r}
 Males <- filter(FinalDat, sex=="M")
@@ -46,6 +46,8 @@ Males <- filter(FinalDat, sex=="M")
 Males <- select(Males, -sex)
 ```
 
+
+## Graphic Description 
 ```{r}
 dd2 <- Males %>% group_by(infected, treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
 
@@ -63,6 +65,7 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 
 In order to compare each sub group we toke them apart and did a separate data for each group. First we are doing the males data, We ar going to use the ggplot data. In the chart we created for the Male group we can see that the ones that had covid19 and took the vaccine were better then the ones that took the placebo, and the Males that were OK and took the placebo had a higher chance of getting sick of covid19 then those that took the vaccine. We can see that the vaccine has a positive reaction to the males.
 
+## Numeric Summeries
 
 ```{r}
 table1 <- xtabs(~infected + treatment, data=Males)
@@ -70,6 +73,9 @@ rowPerc(table1)
 colPerc(table1)
 ```
 By looking at the numeric summery we can see that the plot was right, the males that took the placebo 70% of them got sick of covid19 and only 32% of them that had the vaccine got it. This shows us that the vaccine was very  effective because only 1.28% of the males out of 100 got sick.
+
+
+## Inferential Results
 
 ```{r}
 chisq.test(table1)
@@ -79,7 +85,7 @@ fisher.test(table1)
 
 The fisher exact test gave us a low P- value of 2.645e-11 seeing this numbers means that these results are not likely to occur by a chance. so if you are a Male that took the drug the odd of you getting covid19 is very low as of those who took the placebo, which is 2x greater then if you did take the vaccine.
 
-## Females
+# Females
 
 ```{r}
 Females <- filter(FinalDat, sex=="F")
@@ -89,6 +95,7 @@ Females <- filter(FinalDat, sex=="F")
 Females <- select(Females, -sex)
 ```
 
+## Graphical Description 
 ```{r}
 dd2 <- Females %>% group_by(infected, treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
 
@@ -106,20 +113,33 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 
 Now on our data for Females we can see that the vaccine is working  about the same as for the Males. The chart shows us that females  that took the placebo got sick of covid19 about 60% more then those that took the vaccine. Females  that took the vaccine were about 40% chance of getting covid19. seeing that more females  get sick with the placebo and less with the vaccine we can conclude that the vaccine is having a positive results on females as well. And the females that are on the OK side have a 50% to 50% chance of getting covid19 whether they take the vaccine or the placebo.
 
+## Numeric Summeries
 ```{r}
 table2 <- xtabs(~infected + treatment, data=Females)
 rowPerc(table2)
 colPerc(table2)
 ```
 
+## Inferential Results
+
 ```{r}
 chisq.test(table2)
 chisqtestGC(table2)
 fisher.test(table2)
 ```
-## LGBTQ
 
 
 
-## Druggies
 
+# LGBTQ
+## Graphical Description 
+## Numeric Summeries
+## Inferential Results
+
+
+
+# Druggies
+## Graphical Description 
+## Numeric Summeries
+## Inferential Results
+# Conclusion 
