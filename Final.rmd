@@ -24,13 +24,6 @@ mutate(across(where(is.character), as.factor))
 FinalDat <-read.csv(file="final_Data.csv")
 ```
 
-```{r}
-Males <- filter(FinalDat, sex=="M")
-```
-
-```{r}
-Males <- select(Males, -sex)
-```
 
 # Introduction
 
@@ -87,8 +80,6 @@ fisher.test(table1)
 The fisher exact test gave us a low P- value of 2.645e-11 seeing this numbers means that these results are not likely to occur by a chance. so if you are a Male that took the drug the odd of you getting covid19 is very low as of those who took the placebo, which is 2x greater then if you did take the vaccine.
 
 
-
-
 # Females
 
 ```{r}
@@ -137,6 +128,8 @@ fishtestf<-fisher.test(table2)
 
 The fisher exact test gave us a very low p-value 0.0011, being that is such a small number , the chances of this results are not likely to happen by chance. As we look at the ratio, we got a 1.43 odd ratio, meaning that the chances of getting Covid19 is 1.43% time likely to get it if they thake the placebo, then if they take the vaccine.
 
+# Efficacy
+
 ```{r}
 options(digits = 1)
 femeffic=fishtestf$estimate/(1+fishtestf$estimate)*100
@@ -151,7 +144,33 @@ The confidence interval of the effectiveness of the vaccine on females has a low
 
 
 # LGBTQ
-## Graphical Description 
+
+```{r}
+LGBTQ <- filter(FinalDat, sex=="F")
+```
+
+```{r}
+LGBTQ <- select(LGBTQ, -sex)
+```
+
+## Graphical Description
+```{r}
+dd2 <- LGBTQ %>% group_by(infected, treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected, y=count,fill= treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
+
+
 ## Numeric Summeries
 ## Inferential Results
 
