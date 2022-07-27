@@ -210,6 +210,7 @@ print(Leffic)
 print(Lefficlo)
 print(Leffichi)
 ```
+The Efficacy shows us that 13% of the vaccine is effective  being it at below 50% it means it does not work for LGBTQ. These groups are better off with the placebo. The effectiveness of the vaccine on LGBTQ has a low of `r Lefficlo` and a high of `r Leffichi`.
 
 # Druggies
 ## Graphical Description 
