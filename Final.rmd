@@ -48,6 +48,7 @@ Males <- select(Males, -sex)
 
 
 ## Graphic Description 
+
 ```{r}
 dd2 <- Males %>% group_by(infected, treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
 
@@ -72,7 +73,7 @@ table1 <- xtabs(~infected + treatment, data=Males)
 rowPerc(table1)
 colPerc(table1)
 ```
-By looking at the numeric summery we can see that the plot was right, the males that took the placebo 70% of them got sick of covid19 and only 32% of them that had the vaccine got it. This shows us that the vaccine was very  effective because only 1.28% of the males out of 100 got sick.
+By looking at the numeric summery we can see that the plot was right, the males that took the placebo 70% of them got sick of covid19 and only 32% of them that had the vaccine got it. This shows us that the vaccine was very effective because only 1.28% of the males out of 100 got sick.
 
 
 ## Inferential Results
@@ -95,7 +96,8 @@ Females <- filter(FinalDat, sex=="F")
 Females <- select(Females, -sex)
 ```
 
-## Graphical Description 
+## Graphical Description
+
 ```{r}
 dd2 <- Females %>% group_by(infected, treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
 
@@ -114,11 +116,13 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 Now on our data for Females we can see that the vaccine is working  about the same as for the Males. The chart shows us that females  that took the placebo got sick of covid19 about 60% more then those that took the vaccine. Females  that took the vaccine were about 40% chance of getting covid19. seeing that more females  get sick with the placebo and less with the vaccine we can conclude that the vaccine is having a positive results on females as well. And the females that are on the OK side have a 50% to 50% chance of getting covid19 whether they take the vaccine or the placebo.
 
 ## Numeric Summeries
+
 ```{r}
 table2 <- xtabs(~infected + treatment, data=Females)
 rowPerc(table2)
 colPerc(table2)
 ```
+In the numeric result we can see that Females that took the placebo 2.3% of them got Covid19, and the females that took the vaccine only 1.62% of then got Covid19. Just by seeing this results we can assume that the vaccine had a positive effect on females because there was low chance of getting Covid19 then if you didn't take it. Females are at 2 times at risk of getting Covid10 if they don't take the vaccine.
 
 ## Inferential Results
 
