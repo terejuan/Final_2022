@@ -218,6 +218,8 @@ The Efficacy shows us that 13% of the vaccine is inefective  being it at below 5
 DrugUser<- filter(FinalData, DrugUser=="yes")
 ```
 
+## Graphical Description
+
 ```{r}
 dd2 <- DrugUser %>% group_by(infected, treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
 
@@ -233,9 +235,15 @@ basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
-Looking a the bar chart we can observe that the vaccine is not working for these group the Drug-user. Looks like 85% of the drug-user that took the vaccine got sick with covid10 and those that took the placebo only about 18% of them gor covid19. so we can conclude that the vaccine was ineffective  for these group they are better of with the placebo.
+Looking a the bar chart we can observe that the vaccine is not working for these group the Drug-user. Looks like 85% of the drug-user that took the vaccine got sick with covid19 and those that took the placebo only about 18% of them got covid19. so we can conclude that the vaccine was ineffective  for these group they are better of with the placebo.
 
-## Graphical Description 
 ## Numeric Summeries
+```{r}
+table4 <- xtabs(~infected + treatment, data=DrugUser)
+rowPerc(table4)
+colPerc(table4)
+```
+
+
 ## Inferential Results
 # Conclusion 
