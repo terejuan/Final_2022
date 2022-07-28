@@ -233,6 +233,8 @@ basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
+Looking a the bar chart we can observe that the vaccine is not working for these group the Drug-user. Looks like 85% of the drug-user that took the vaccine got sick with covid10 and those that took the placebo only about 18% of them gor covid19. so we can conclude that the vaccine was ineffective  for these group they are better of with the placebo.
+
 ## Graphical Description 
 ## Numeric Summeries
 ## Inferential Results
