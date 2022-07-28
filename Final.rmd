@@ -198,7 +198,7 @@ fishtestL <-fisher.test(table3)
 print(fishtestL)
 ```
 
-The odd ratio is telling us that the  placebo is  0.1%. of catching vovid19, this group  is better off with the placebo then the vaccine.
+The odd ratio is telling us that the placebo is  0.1%. of catching vovid19, this group  is better off with the placebo then the vaccine.
 
 # Efficacy
 
@@ -210,9 +210,29 @@ print(Leffic)
 print(Lefficlo)
 print(Leffichi)
 ```
-The Efficacy shows us that 13% of the vaccine is effective  being it at below 50% it means it does not work for LGBTQ. These groups are better off with the placebo. The effectiveness of the vaccine on LGBTQ has a low of `r Lefficlo` and a high of `r Leffichi`.
+The Efficacy shows us that 13% of the vaccine is inefective  being it at below 50% it means it does not work for LGBTQ. These groups are better off with the placebo than the vaccine. The effectiveness of the vaccine on LGBTQ has a low of `r Lefficlo` and a high of `r Leffichi`.
 
 # Druggies
+
+```{r}
+DrugUser<- filter(FinalData, DrugUser=="yes")
+```
+
+```{r}
+dd2 <- DrugUser %>% group_by(infected, treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected, y=count,fill= treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
 ## Graphical Description 
 ## Numeric Summeries
 ## Inferential Results
