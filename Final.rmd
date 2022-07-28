@@ -77,7 +77,7 @@ print(fishtestm)
 
 The fisher exact test gave us a low P- value of 2.645e-11 seeing this numbers means that these results are not likely to occur by a chance. so if you are a Male that took the vaccine the odd of you getting covid19 is very low as of those who took the placebo, which is 2x greater then if you did take the vaccine.
 
-# Eficcacy
+## Eficcacy
 
 ```{r}
 options(digits = 1)
@@ -140,7 +140,7 @@ print(fishtestf)
 
 The fisher exact test gave us a very low p-value 9e-04, being that is such a small number , the chances of this results are not likely to happen by chance. As we look at the ratio, we got a 1.43 odd ratio, meaning that the chances of getting Covid19 is 1.43% time likely to get it if they thake the placebo, then if they take the vaccine.
 
-# Efficacy
+## Efficacy
 
 ```{r}
 femeffic=fishtestf$estimate/(1+fishtestf$estimate)*100
@@ -200,7 +200,7 @@ print(fishtestL)
 
 The odd ratio is telling us that the placebo is  0.1%. of catching vovid19, this group  is better off with the placebo then the vaccine.
 
-# Efficacy
+## Efficacy
 
 ```{r}
 Leffic=fishtestL$estimate/(1+fishtestL$estimate)*100
@@ -243,7 +243,7 @@ table4 <- xtabs(~infected + treatment, data=DrugUser)
 rowPerc(table4)
 colPerc(table4)
 ```
-
+as we look at the numeric results we can see that about 3% of the drug users that took the vaccine got covid19, when only 0.6% of them that took the placebo got covid19
 
 ## Inferential Results
 # Conclusion 
