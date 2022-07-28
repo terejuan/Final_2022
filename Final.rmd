@@ -246,4 +246,11 @@ colPerc(table4)
 as we look at the numeric results we can see that about 3% of the drug users that took the vaccine got covid19, when only 0.6% of them that took the placebo got covid19
 
 ## Inferential Results
+
+```{r}
+chisq.test(table4)
+chisqtestGC(table4)
+fishtestD <-fisher.test(table4)
+print(fishtestD)
+```
 # Conclusion 
