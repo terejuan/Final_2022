@@ -54,7 +54,7 @@ basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
-In order to compare each sub group we toke them apart and did a separate data for each group. First we are doing the males data, We ar going to use the ggplot data. In the chart we created for the Male group we can see that the ones that had covid19 and took the vaccine were better then the ones that took the placebo, and the Males that were OK and took the placebo had a higher chance of getting sick of covid19 then those that took the vaccine. We can see that the vaccine has a positive reaction to the males.
+In order to compare each sub group we toke them apart and did a separate data for each group. First we are doing the males data, We ar going to use the ggplot data. In the chart we created for the Male group we can see that the ones that had covid19 and took the vaccine were better then the ones that took the placebo. those that took the vaccine about 35% of them got sick, and those that took the placebo about 70% of them got sick. Showing us that the vaccines was working.And the Males that were OK and took the placebo had a higher chance of getting sick of covid19 then those that took the vaccine. We can see that the vaccine has a positive reaction to the males.
 
 ## Numeric Summeries
 
@@ -256,4 +256,23 @@ print(fishtestD)
 
 The results we got from the inferential results tells us that those that took the placebo only 0.2% of them are likely to get covid. Being that a very low chance of getting covid19 with the placebo, they were better off taking the placebo.The P-value gave us a very low value which tells us there is a very little chance of getting these if there was no difference between the vaccine and the placebo for the Drug users.
 
+## Efficacy
+
+```{r}
+Deffic=fishtestD$estimate/(1+fishtestD$estimate)*100
+Defficlo=fishtestD$conf.int[1]/(1+fishtestD$conf.int[1])*100
+Deffichi=fishtestD$conf.int[2]/(1+fishtestD$conf.int[2])*100
+print(Deffic)
+print(Defficlo)
+print(Deffichi)
+```
+The effectiveness of the vaccine on Drug users has a low of `r Defficlo` and a high of `r Deffichi`. The effectiveness of the vaccine on Druguser is 15% being at such a low number we can conclude that the vaccine is ineffective  for these groups.
+
 # Conclusion 
+
+As we worked our way through these sub groups we got different results for each group.
+When we did the date on the Males we saw that those that took the vaccine 32% of them got sick with covid19, and those that took the placebo were about 70% were at risc of geting covid 19. The vaccine was Effective on protecting the males from covid19, The test states that the vaccine is effective because it gave us a `r maleffic`. And when we did the Females the chart shows us that females  that took the placebo got sick of covid19 about 60% more then those that took the vaccine. Females  that took the vaccine were about 40% chance of getting covid19. For the females the Vaccine was effective as well because the test gave us  `r femeffic`. When we did the test on LGBTQ the test gave us only a `r Leffic`, showing us that the vaccine was Ineffective for these group, which was the lowest of all the sub groups.  And when we did the Drug users we got `r Deffic`, telling us the the vaccine for covid19 was not working for these group either.
+
+If you are a male or a female the vaccine is strongly recommended because it will have a positive effect on you against Covid19, however if your LGBTQ(gay) or a Drug user the recommendations is not to take the vaccine because it will not protect  you from Covid19.
+
+
