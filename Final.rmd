@@ -253,4 +253,7 @@ chisqtestGC(table4)
 fishtestD <-fisher.test(table4)
 print(fishtestD)
 ```
+
+The results we got from the inferential results tells us that those that took the placebo only 0.2% of them are likely to get covid. Being that a very low chance of getting covid19 with the placebo, they were better off taking the placebo.The P-value gave us a very low value which tells us there is a very little chance of getting these if there was no difference between the vaccine and the placebo for the Drug users.
+
 # Conclusion 
